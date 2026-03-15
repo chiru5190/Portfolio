@@ -1,33 +1,99 @@
 import { motion } from "framer-motion"
+import { 
+  Code2, BrainCircuit, Globe, Database, GitBranch, Cpu,
+  Users, MessageSquare
+} from "lucide-react"
 
 const skillCategories = [
   {
     title: "Programming Languages",
-    skills: ["Python", "C++", "JavaScript"]
+    icon: <Code2 size={20} />,
+    color: "text-blue-400",
+    bgColor: "bg-blue-500/10",
+    skills: [
+      { name: "Python", icon: "🐍" },
+      { name: "C++", icon: "⚡" },
+      { name: "JavaScript", icon: "🟨" }
+    ]
   },
   {
-    title: "Machine Learning & Data Science",
-    skills: ["Scikit-learn", "TensorFlow", "NumPy", "Pandas", "Matplotlib", "Seaborn", "Natural Language Processing"]
+    title: "ML & Data Science",
+    icon: <BrainCircuit size={20} />,
+    color: "text-purple-400",
+    bgColor: "bg-purple-500/10",
+    skills: [
+      { name: "Scikit-learn", icon: "🔬" },
+      { name: "TensorFlow", icon: "🧠" },
+      { name: "NumPy", icon: "🔢" },
+      { name: "Pandas", icon: "🐼" },
+      { name: "Matplotlib", icon: "📊" },
+      { name: "Seaborn", icon: "📈" },
+      { name: "NLP", icon: "💬" }
+    ]
   },
   {
     title: "Web Development",
-    skills: ["ReactJS", "Flask", "Streamlit", "HTML", "CSS", "Bootstrap"]
+    icon: <Globe size={20} />,
+    color: "text-sky-400",
+    bgColor: "bg-sky-500/10",
+    skills: [
+      { name: "ReactJS", icon: "⚛️" },
+      { name: "Flask", icon: "🌶️" },
+      { name: "Streamlit", icon: "🚀" },
+      { name: "HTML", icon: "🌐" },
+      { name: "CSS", icon: "🎨" },
+      { name: "Bootstrap", icon: "🅱️" }
+    ]
   },
   {
     title: "Databases",
-    skills: ["SQL", "MySQL", "SQLite"]
+    icon: <Database size={20} />,
+    color: "text-emerald-400",
+    bgColor: "bg-emerald-500/10",
+    skills: [
+      { name: "SQL", icon: "🗄️" },
+      { name: "MySQL", icon: "🐬" },
+      { name: "SQLite", icon: "📦" }
+    ]
   },
   {
     title: "Tools & Platforms",
-    skills: ["Git", "GitHub", "AWS", "Google Colab"]
+    icon: <GitBranch size={20} />,
+    color: "text-orange-400",
+    bgColor: "bg-orange-500/10",
+    skills: [
+      { name: "Git", icon: "🔀" },
+      { name: "GitHub", icon: "🐙" },
+      { name: "AWS", icon: "☁️" },
+      { name: "Google Colab", icon: "📓" }
+    ]
   },
   {
-    title: "Core Computer Science",
-    skills: ["Data Structures & Algorithms", "DBMS", "Operating Systems", "Computer Networks", "Object-Oriented Programming"]
+    title: "Core CS",
+    icon: <Cpu size={20} />,
+    color: "text-rose-400",
+    bgColor: "bg-rose-500/10",
+    skills: [
+      { name: "DSA", icon: "🌲" },
+      { name: "DBMS", icon: "🗃️" },
+      { name: "OS", icon: "💻" },
+      { name: "Networks", icon: "🌐" },
+      { name: "OOP", icon: "🧱" }
+    ]
   },
   {
     title: "Soft Skills",
-    skills: ["Communication", "Leadership", "Teamwork", "Time Management", "Problem Solving", "Adaptability"]
+    icon: <Users size={20} />,
+    color: "text-amber-400",
+    bgColor: "bg-amber-500/10",
+    skills: [
+      { name: "Communication", icon: "🗣️" },
+      { name: "Leadership", icon: "👑" },
+      { name: "Teamwork", icon: "🤝" },
+      { name: "Time Mgmt", icon: "⏰" },
+      { name: "Problem Solving", icon: "🧩" },
+      { name: "Adaptability", icon: "🔄" }
+    ]
   }
 ]
 
@@ -36,7 +102,9 @@ export default function Skills() {
     <section id="skills" className="py-24 relative overflow-hidden">
       
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.05),transparent_50%)] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-full h-full pointer-events-none" style={{
+        background: 'radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.04), transparent 50%)'
+      }} />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -53,30 +121,35 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               key={category.title}
-              className="glass-card p-8 group border border-white/5 hover:border-primary/30"
+              className="glass-card glow-card p-6 group"
             >
-              <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
-                  0{index + 1}
-                </span>
-                {category.title}
-              </h3>
+              {/* Category Header */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className={`p-2.5 rounded-xl ${category.bgColor} ${category.color}`}>
+                  {category.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-white">
+                  {category.title}
+                </h3>
+              </div>
               
+              {/* Skill Chips */}
               <div className="flex flex-wrap gap-2">
                 {category.skills.map(skill => (
                   <span 
-                    key={skill}
-                    className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 group-hover:border-primary/20 group-hover:text-white transition-colors"
+                    key={skill.name}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/8 text-sm text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/15 transition-all duration-200 cursor-default"
                   >
-                    {skill}
+                    <span className="text-sm">{skill.icon}</span>
+                    {skill.name}
                   </span>
                 ))}
               </div>

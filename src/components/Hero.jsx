@@ -5,10 +5,19 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       
-      {/* Background Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-screen filter blur-[128px] animate-blob" />
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/20 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-full h-96 bg-accent/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-4000" />
+      {/* Animated Gradient Background */}
+      <div className="hero-gradient-bg" />
+      
+      {/* Floating Glow Blobs */}
+      <div className="blob blob-1" />
+      <div className="blob blob-2" />
+      <div className="blob blob-3" />
+
+      {/* Grid pattern overlay for depth */}
+      <div className="absolute inset-0 z-0" style={{
+        backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)',
+        backgroundSize: '40px 40px'
+      }} />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         
@@ -16,7 +25,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-sm font-medium text-gray-300">Available for Opportunities</span>
@@ -25,7 +34,7 @@ export default function Hero() {
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight"
         >
           Hi, I'm <span className="text-gradient">Gedela Chiranjeevi</span>
@@ -36,8 +45,8 @@ export default function Hero() {
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
         >
           I build intelligent systems, data pipelines, and AI-powered applications using machine learning and modern web technologies.
         </motion.p>
@@ -45,15 +54,15 @@ export default function Hero() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
         >
-          <a href="#projects" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-background font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2 group">
+          <a href="#projects" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-sky-500 text-white font-semibold hover:scale-105 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center justify-center gap-2 group">
             View Projects
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
           
-          <a href="/resume.pdf" className="w-full sm:w-auto px-8 py-4 rounded-xl glass-card font-semibold text-white hover:border-white/20 flex items-center justify-center gap-2">
+          <a href="/Portfolio/resume.pdf" download className="w-full sm:w-auto px-8 py-4 rounded-xl glass-card font-semibold text-white flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-white/5">
             <Download size={18} />
             Download Resume
           </a>
@@ -64,17 +73,19 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 flex items-center justify-center gap-6"
+          className="mt-16 flex items-center justify-center gap-4"
         >
-          <a href="https://github.com/chiru5190" className="p-3 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-all">
-            <Github size={24} />
-          </a>
-          <a href="http://www.linkedin.com/in/gedelachiranjeevi" className="p-3 rounded-full hover:bg-white/10 text-gray-400 hover:text-[#0a66c2] transition-all">
-            <Linkedin size={24} />
-          </a>
-          <a href="mailto:chiranjeevig552005@gmail.com" className="p-3 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-all">
-            <Mail size={24} />
-          </a>
+          {[
+            { href: "https://github.com/chiru5190", icon: <Github size={22} />, hoverColor: "hover:text-white hover:shadow-white/20" },
+            { href: "http://www.linkedin.com/in/gedelachiranjeevi", icon: <Linkedin size={22} />, hoverColor: "hover:text-[#0a66c2] hover:shadow-[#0a66c2]/20" },
+            { href: "mailto:chiranjeevig552005@gmail.com", icon: <Mail size={22} />, hoverColor: "hover:text-white hover:shadow-white/20" }
+          ].map((link, i) => (
+            <a key={i} href={link.href} target="_blank" rel="noreferrer"
+              className={`p-3.5 rounded-full border border-white/10 bg-white/5 text-gray-400 ${link.hoverColor} hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
+            >
+              {link.icon}
+            </a>
+          ))}
         </motion.div>
 
       </div>

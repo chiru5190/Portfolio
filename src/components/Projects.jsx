@@ -3,6 +3,12 @@ import { motion } from "framer-motion"
 import { Github, ExternalLink, ChevronRight, CheckCircle2 } from "lucide-react"
 import Modal from "./ui/Modal"
 
+const projectColors = [
+  { gradient: "from-blue-500/20 to-cyan-500/20", glow: "group-hover:shadow-blue-500/20" },
+  { gradient: "from-purple-500/20 to-pink-500/20", glow: "group-hover:shadow-purple-500/20" },
+  { gradient: "from-emerald-500/20 to-teal-500/20", glow: "group-hover:shadow-emerald-500/20" }
+]
+
 const projects = [
   {
     title: "NSE Stock Data Pipeline",
@@ -16,6 +22,7 @@ const projects = [
     ],
     stack: ["Python", "Pandas", "SQLite", "Streamlit", "Plotly", "yfinance"],
     github: "https://github.com/chiru5190",
+    emoji: "📈"
   },
   {
     title: "Sentiment Analysis",
@@ -29,6 +36,7 @@ const projects = [
     ],
     stack: ["Python", "Scikit-learn", "Streamlit", "Pandas", "NumPy"],
     github: "https://github.com/chiru5190",
+    emoji: "💬"
   },
   {
     title: "Email Classifier",
@@ -41,7 +49,8 @@ const projects = [
       "Real-time prediction visualization using Chart.js"
     ],
     stack: ["Python", "TensorFlow", "Flask", "JavaScript", "Bootstrap", "Chart.js"],
-    github: "https://github.com/chiru5190"
+    github: "https://github.com/chiru5190",
+    emoji: "📧"
   }
 ]
 
@@ -51,7 +60,12 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 relative">
       
-      <div className="max-w-7xl mx-auto px-6">
+      {/* Background glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.03), transparent 50%)'
+      }} />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,55 +79,61 @@ export default function Projects() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => setSelectedProject(project)}
-              className="glass-card group cursor-pointer flex flex-col h-full overflow-hidden"
-            >
-              {/* Card Header area to simulate an image placeholder or tech banner */}
-              <div className="h-48 bg-white/5 border-b border-white/5 flex items-center justify-center p-6 relative overflow-hidden group-hover:bg-primary/5 transition-colors">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <h3 className="text-2xl font-bold text-white/40 group-hover:text-white/80 transition-colors text-center relative z-10 font-mono tracking-tighter">
-                  {project.stack[0].toUpperCase()}
-                </h3>
-              </div>
-              
-              <div className="p-8 flex-1 flex flex-col justify-between relative z-10 bg-surface/50">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 mb-6 leading-relaxed">
-                    {project.shortDesc}
-                  </p>
+          {projects.map((project, index) => {
+            const colors = projectColors[index % projectColors.length]
+            return (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                onClick={() => setSelectedProject(project)}
+                className={`glass-card glow-card group cursor-pointer flex flex-col h-full overflow-hidden hover:shadow-2xl ${colors.glow} hover:scale-[1.03] transition-all duration-400`}
+              >
+                {/* Card Header with gradient and emoji */}
+                <div className="h-48 bg-white/[0.02] border-b border-white/5 flex items-center justify-center p-6 relative overflow-hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                  <div className="relative z-10 text-center">
+                    <span className="text-5xl block mb-3">{project.emoji}</span>
+                    <span className="text-sm font-mono font-medium text-white/30 group-hover:text-white/70 transition-colors tracking-widest uppercase">
+                      {project.stack[0]}
+                    </span>
+                  </div>
                 </div>
                 
-                <div>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.stack.slice(0, 3).map(tech => (
-                      <span key={tech} className="text-xs font-medium text-secondary bg-secondary/10 px-2.5 py-1 rounded-md">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.stack.length > 3 && (
-                      <span className="text-xs font-medium text-gray-400 bg-white/5 px-2.5 py-1 rounded-md">
-                        +{project.stack.length - 3}
-                      </span>
-                    )}
+                <div className="p-7 flex-1 flex flex-col justify-between relative z-10">
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6 leading-relaxed text-sm">
+                      {project.shortDesc}
+                    </p>
                   </div>
                   
-                  <div className="flex items-center text-primary font-medium text-sm group-hover:translate-x-2 transition-transform">
-                    View Project Details <ChevronRight size={16} className="ml-1" />
+                  <div>
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {project.stack.slice(0, 4).map(tech => (
+                        <span key={tech} className="text-xs font-medium text-sky-300 bg-sky-500/10 px-2 py-1 rounded-md border border-sky-500/10">
+                          {tech}
+                        </span>
+                      ))}
+                      {project.stack.length > 4 && (
+                        <span className="text-xs font-medium text-gray-500 bg-white/5 px-2 py-1 rounded-md">
+                          +{project.stack.length - 4}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center text-primary font-medium text-sm group-hover:translate-x-2 transition-transform duration-300">
+                      View Details <ChevronRight size={16} className="ml-1" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
       </div>
 
@@ -121,9 +141,12 @@ export default function Projects() {
       <Modal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)}>
         {selectedProject && (
           <div className="text-left">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 pr-10">
-              {selectedProject.title}
-            </h2>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-3xl">{selectedProject.emoji}</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white pr-10">
+                {selectedProject.title}
+              </h2>
+            </div>
             <p className="text-xl text-primary mb-8 font-medium">
               {selectedProject.shortDesc}
             </p>
@@ -138,40 +161,39 @@ export default function Projects() {
 
               <div>
                 <h4 className="text-lg font-semibold text-white mb-4">Key Features</h4>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3">
                   {selectedProject.features.map((feature, i) => (
-                    <div key={i} className="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-                      <CheckCircle2 size={20} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{feature}</span>
+                    <div key={i} className="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-primary/20 transition-colors">
+                      <CheckCircle2 size={18} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span className="text-gray-300 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-white mb-3">Technologies Used</h4>
+                <h4 className="text-lg font-semibold text-white mb-3">Technologies</h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.stack.map(tech => (
-                    <span key={tech} className="px-3 py-1.5 rounded-lg bg-surface border border-white/10 text-sm text-gray-200">
+                    <span key={tech} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-200 hover:bg-white/10 transition-colors">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-4 border-t border-white/10">
+              <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
                 <a 
                   href={selectedProject.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-background font-semibold hover:bg-gray-200 transition-colors"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-background font-semibold hover:bg-gray-200 hover:scale-105 transition-all"
                 >
-                  <Github size={20} />
-                  View Source Code
+                  <Github size={18} />
+                  View Source
                 </a>
-                {/* Placeholder for live demo if available */}
-                <button disabled className="flex items-center gap-2 px-6 py-3 rounded-lg glass-card text-gray-400 cursor-not-allowed border-white/5">
-                  <ExternalLink size={20} />
+                <button disabled className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 cursor-not-allowed">
+                  <ExternalLink size={18} />
                   Live Demo (Coming Soon)
                 </button>
               </div>
