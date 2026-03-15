@@ -10,7 +10,7 @@ import Contact from "./components/Contact"
 
 export default function App() {
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-bg min-h-screen">
       <Navbar />
       <Hero />
       <About />
@@ -20,10 +20,8 @@ export default function App() {
       <Certificates />
       <Achievements />
       <Contact />
-      <footer className="py-8 text-center text-sm text-text-muted border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-6">
-          © {new Date().getFullYear()} Gedela Chiranjeevi
-        </div>
+      <footer className="py-8 text-center text-sm text-muted border-t border-border bg-surface">
+        <div className="max-w-6xl mx-auto px-6">© {new Date().getFullYear()} Gedela Chiranjeevi</div>
       </footer>
     </div>
   )

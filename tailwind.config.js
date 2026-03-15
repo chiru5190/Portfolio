@@ -7,14 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0f172a",
-        card: "#1e293b",
+        bg: "#f8fafc",
+        surface: "#ffffff",
         accent: "#6366f1",
+        "accent-2": "#3b82f6",
         "accent-hover": "#818cf8",
-        "text-primary": "#e2e8f0",
-        "text-secondary": "#94a3b8",
-        "text-muted": "#64748b",
-        border: "#334155",
+        heading: "#1e293b",
+        body: "#334155",
+        muted: "#64748b",
+        border: "#e2e8f0",
+        "border-hover": "#cbd5e1",
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
