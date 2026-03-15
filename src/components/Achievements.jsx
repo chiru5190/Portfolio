@@ -1,32 +1,31 @@
 import { motion } from "framer-motion"
 
 const achievements = [
-  { stat: "250+", label: "Coding problems solved across LeetCode and NxtWave" },
-  { stat: "Gen AI", label: "Built a Generative AI application at NxtWave Workshop" }
+  "Solved 250+ coding problems across NxtWave and LeetCode.",
+  "Built a Generative AI application during a NxtWave workshop."
 ]
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-24 bg-card/30">
+    <section id="achievements" className="py-24 bg-card/20">
       <div className="max-w-6xl mx-auto px-6">
         
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="section-title mb-10">Achievements</h2>
+          <h2 className="section-title mb-8">Achievements</h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
+        <div className="space-y-4">
           {achievements.map((a, i) => (
-            <motion.div
+            <motion.p
               key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="card p-6 text-center"
+              transition={{ delay: i * 0.1 }}
+              className="text-text-secondary text-lg leading-relaxed pl-5 border-l-2 border-accent/30"
             >
-              <p className="text-3xl font-bold text-accent mb-2">{a.stat}</p>
-              <p className="text-sm text-text-secondary">{a.label}</p>
-            </motion.div>
+              {a}
+            </motion.p>
           ))}
         </div>
 

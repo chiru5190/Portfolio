@@ -1,32 +1,11 @@
 import { motion } from "framer-motion"
-import { Code2, BrainCircuit, Globe, Database, GitBranch } from "lucide-react"
 
-const skillCategories = [
-  {
-    title: "Programming",
-    icon: <Code2 size={18} />,
-    skills: ["Python", "C++", "JavaScript"]
-  },
-  {
-    title: "Machine Learning",
-    icon: <BrainCircuit size={18} />,
-    skills: ["TensorFlow", "Scikit-learn", "NumPy", "Pandas", "NLP"]
-  },
-  {
-    title: "Web Development",
-    icon: <Globe size={18} />,
-    skills: ["ReactJS", "Flask", "Streamlit", "HTML", "CSS", "Bootstrap"]
-  },
-  {
-    title: "Databases",
-    icon: <Database size={18} />,
-    skills: ["SQL", "MySQL", "SQLite"]
-  },
-  {
-    title: "Tools",
-    icon: <GitBranch size={18} />,
-    skills: ["Git", "GitHub", "AWS", "Google Colab"]
-  }
+const skillGroups = [
+  { label: "Programming", skills: ["Python", "C++", "JavaScript"] },
+  { label: "Machine Learning", skills: ["TensorFlow", "Scikit-learn", "Pandas", "NumPy", "NLP"] },
+  { label: "Web Development", skills: ["React", "Flask", "Streamlit", "HTML", "CSS"] },
+  { label: "Databases", skills: ["SQL", "MySQL", "SQLite"] },
+  { label: "Tools", skills: ["Git", "GitHub", "AWS", "Google Colab"] }
 ]
 
 export default function Skills() {
@@ -41,32 +20,25 @@ export default function Skills() {
           className="mb-14"
         >
           <h2 className="section-title mb-3">Skills</h2>
-          <p className="section-subtitle max-w-xl">Technologies and tools I work with regularly.</p>
+          <p className="section-subtitle max-w-xl">Technologies and tools I work with.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, i) => (
+        <div className="space-y-6">
+          {skillGroups.map((group, i) => (
             <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 15 }}
+              key={group.label}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="card p-6"
+              transition={{ delay: i * 0.06 }}
+              className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6"
             >
-              <div className="flex items-center gap-2.5 mb-5">
-                <span className="text-accent">{category.icon}</span>
-                <h3 className="text-sm font-semibold text-text-primary uppercase tracking-wider">{category.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map(skill => (
-                  <span key={skill}
-                    className="px-3 py-1.5 text-sm text-text-secondary bg-background rounded-md border border-border/50 hover:text-text-primary hover:border-accent/30 transition-colors cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <span className="text-sm font-medium text-accent w-40 shrink-0">
+                {group.label}
+              </span>
+              <span className="text-text-secondary">
+                {group.skills.join(" · ")}
+              </span>
             </motion.div>
           ))}
         </div>

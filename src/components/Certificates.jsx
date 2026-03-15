@@ -1,12 +1,12 @@
 import { motion } from "framer-motion"
-import { Award } from "lucide-react"
+import { Award, ExternalLink } from "lucide-react"
 
 const certs = [
-  "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
-  "JavaScript Essentials – NxtWave",
-  "Programming Foundations with Python – NxtWave",
-  "Introduction to Databases (SQL) – NxtWave",
-  "AWS Solution Architect Micro Degree"
+  { title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional", issuer: "Oracle" },
+  { title: "JavaScript Essentials", issuer: "NxtWave" },
+  { title: "Programming Foundations with Python", issuer: "NxtWave" },
+  { title: "Introduction to Databases (SQL)", issuer: "NxtWave" },
+  { title: "AWS Solution Architect Micro Degree", issuer: "AWS" }
 ]
 
 export default function Certificates() {
@@ -18,18 +18,24 @@ export default function Certificates() {
           <h2 className="section-title mb-10">Certificates</h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {certs.map((cert, i) => (
+        <div className="space-y-3">
+          {certs.map((c, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="card p-5 flex items-start gap-3"
+              transition={{ delay: i * 0.06 }}
+              className="card p-5 flex items-center gap-4"
             >
-              <Award size={18} className="text-accent shrink-0 mt-0.5" />
-              <p className="text-sm text-text-secondary leading-relaxed">{cert}</p>
+              <Award size={18} className="text-accent shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm text-text-primary font-medium truncate">{c.title}</p>
+                <p className="text-xs text-text-muted">{c.issuer}</p>
+              </div>
+              <button className="text-xs text-text-muted hover:text-accent flex items-center gap-1 shrink-0 transition-colors">
+                View <ExternalLink size={12} />
+              </button>
             </motion.div>
           ))}
         </div>
