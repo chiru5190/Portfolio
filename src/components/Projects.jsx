@@ -5,19 +5,29 @@ import Modal from "./ui/Modal"
 
 const projects = [
   {
-    title: "Sentiment Analysis Engine",
-    problem: "Businesses need to understand customer sentiment at scale, but manually reading reviews is impractical.",
-    solution: "Built an NLP pipeline using TF-IDF vectorization and supervised ML classifiers to automatically categorize text sentiments in real-time via a Streamlit dashboard.",
-    features: ["NLP preprocessing pipeline", "Multi-class sentiment classification", "Real-time prediction", "Streamlit dashboard"],
-    stack: ["Python", "Scikit-learn", "NLTK", "Streamlit"],
+    title: "Sentiment Analysis",
+    subtitle: "ML-Based Text Classification",
+    problem: "Manual sentiment analysis is inefficient and doesn't scale for large volumes of text data.",
+    solution: "Built an ML model using TF-IDF and supervised learning to classify sentiments automatically with real-time prediction.",
+    features: [
+      "NLP preprocessing (tokenization, stopword removal)",
+      "Real-time prediction using Streamlit",
+      "Batch text processing",
+    ],
+    stack: ["Python", "Scikit-learn", "Pandas", "NumPy", "Streamlit"],
     github: "https://github.com/chiru5190", live: null
   },
   {
     title: "Email Classifier",
-    problem: "Enterprise inboxes are cluttered with mixed email types, creating delays in responding to critical messages.",
-    solution: "Designed a TensorFlow neural network that classifies emails into Work, Personal, and Spam categories, served through a Flask REST API with a responsive frontend.",
-    features: ["TensorFlow neural network", "Flask REST API", "Responsive frontend", "Chart.js visualizations"],
-    stack: ["Python", "TensorFlow", "Flask", "JavaScript"],
+    subtitle: "ML-based Email Categorization",
+    problem: "Manual email categorization is time-consuming and error-prone for large inboxes.",
+    solution: "Built a neural network model using TensorFlow to classify emails into categories with a Flask backend for real-time inference.",
+    features: [
+      "Flask backend for real-time inference",
+      "Interactive frontend with HTML/CSS/JS",
+      "Visualization of prediction confidence",
+    ],
+    stack: ["Python", "TensorFlow", "Flask", "JavaScript", "Bootstrap", "Chart.js"],
     github: "https://github.com/chiru5190", live: null
   }
 ]
@@ -26,7 +36,7 @@ export default function Projects() {
   const [selected, setSelected] = useState(null)
 
   return (
-    <section id="projects" className="py-32 bg-bg">
+    <section className="py-32 bg-surface">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
           <h2 className="section-title mb-3">More Projects</h2>
@@ -40,8 +50,9 @@ export default function Projects() {
               onClick={() => setSelected(p)}
               className="card p-6 flex flex-col h-full group cursor-pointer">
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-heading mb-3 group-hover:text-accent transition-colors">{p.title}</h3>
-                <div className="mb-4">
+                <h3 className="text-lg font-semibold text-heading mb-0.5 group-hover:text-accent transition-colors">{p.title}</h3>
+                <p className="text-xs text-accent mb-4">{p.subtitle}</p>
+                <div className="mb-3">
                   <h4 className="text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Problem</h4>
                   <p className="text-sm text-body leading-relaxed">{p.problem}</p>
                 </div>
@@ -67,8 +78,9 @@ export default function Projects() {
       <Modal isOpen={!!selected} onClose={() => setSelected(null)}>
         {selected && (
           <div>
-            <h2 className="text-xl font-bold text-heading mb-1 pr-8">{selected.title}</h2>
-            <div className="space-y-4 mt-4">
+            <h2 className="text-xl font-bold text-heading mb-0.5 pr-8">{selected.title}</h2>
+            <p className="text-accent text-sm mb-5">{selected.subtitle}</p>
+            <div className="space-y-4">
               <div>
                 <h4 className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">Problem</h4>
                 <p className="text-body text-sm leading-relaxed">{selected.problem}</p>

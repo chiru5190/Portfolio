@@ -6,6 +6,9 @@ const navLinks = [
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
+  { name: "Education", href: "#education" },
+  { name: "Certificates", href: "#certificates" },
+  { name: "Achievements", href: "#achievements" },
   { name: "Contact", href: "#contact" },
 ]
 
@@ -29,7 +32,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <a href="#" className="text-lg font-bold text-heading">GC<span className="text-accent">.</span></a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map(l => (
             <a key={l.name} href={l.href} className="text-sm text-muted hover:text-heading transition-colors">{l.name}</a>
           ))}

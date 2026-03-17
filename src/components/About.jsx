@@ -9,7 +9,7 @@ export default function About() {
           <h2 className="section-title mb-6">About</h2>
           <div className="space-y-4 text-body text-lg leading-relaxed">
             <p>
-              I am a Computer Science student focused on building real-world machine learning systems. My work involves designing data pipelines, training models, and deploying applications that solve practical problems.
+              I am a Computer Science student focused on building real-world machine learning systems and data-driven applications. My work involves designing ETL pipelines, training ML models, and developing interactive dashboards.
             </p>
             <p>
               I am particularly interested in <span className="text-heading font-medium">NLP</span>, <span className="text-heading font-medium">data engineering</span>, and <span className="text-heading font-medium">scalable AI systems</span>.

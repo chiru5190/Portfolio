@@ -14,7 +14,7 @@ export default function Contact() {
     const data = new FormData(formRef.current)
 
     try {
-      // Using Formspree — replace with your own form ID at https://formspree.io
+      // Replace xyzabcde with your Formspree form ID from https://formspree.io
       const res = await fetch("https://formspree.io/f/xyzabcde", {
         method: "POST", body: data, headers: { Accept: "application/json" }
       })
@@ -33,7 +33,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-32 bg-surface">
+    <section id="contact" className="py-32 bg-bg">
       <div className="max-w-6xl mx-auto px-6">
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
@@ -43,25 +43,21 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-5 gap-8">
 
-          {/* Contact Info */}
-          <motion.div initial={{ opacity: 0, x: -15 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2 space-y-4">
-            <div className="space-y-5">
-              <a href="mailto:chiranjeevig552005@gmail.com" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
-                <div className="w-10 h-10 rounded-lg bg-bg border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Mail size={16} className="text-accent" /></div>
-                <div><p className="text-xs text-muted">Email</p><p className="text-sm font-medium">chiranjeevig552005@gmail.com</p></div>
-              </a>
-              <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
-                <div className="w-10 h-10 rounded-lg bg-bg border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Github size={16} className="text-accent" /></div>
-                <div><p className="text-xs text-muted">GitHub</p><p className="text-sm font-medium">chiru5190</p></div>
-              </a>
-              <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
-                <div className="w-10 h-10 rounded-lg bg-bg border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Linkedin size={16} className="text-accent" /></div>
-                <div><p className="text-xs text-muted">LinkedIn</p><p className="text-sm font-medium">gedelachiranjeevi</p></div>
-              </a>
-            </div>
+          <motion.div initial={{ opacity: 0, x: -15 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2 space-y-5">
+            <a href="mailto:chiranjeevig552005@gmail.com" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
+              <div className="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Mail size={16} className="text-accent" /></div>
+              <div><p className="text-xs text-muted">Email</p><p className="text-sm font-medium">chiranjeevig552005@gmail.com</p></div>
+            </a>
+            <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
+              <div className="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Github size={16} className="text-accent" /></div>
+              <div><p className="text-xs text-muted">GitHub</p><p className="text-sm font-medium">chiru5190</p></div>
+            </a>
+            <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
+              <div className="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Linkedin size={16} className="text-accent" /></div>
+              <div><p className="text-xs text-muted">LinkedIn</p><p className="text-sm font-medium">gedelachiranjeevi</p></div>
+            </a>
           </motion.div>
 
-          {/* Form */}
           <motion.div initial={{ opacity: 0, x: 15 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-3">
             <form ref={formRef} onSubmit={handleSubmit} className="card p-6 space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
