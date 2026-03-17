@@ -34,7 +34,7 @@ export default function Navbar() {
           {navLinks.map(l => (
             <a key={l.name} href={l.href} className="text-sm text-muted hover:text-heading transition-colors">{l.name}</a>
           ))}
-          <a href="/Portfolio/resume.pdf" download className="flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors font-medium">
+          <a href="/portfolio/resume.pdf" download className="flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors font-medium">
             <Download size={14} /> Resume
           </a>
         </div>
@@ -57,7 +57,7 @@ export default function Navbar() {
               {navLinks.map(l => (
                 <a key={l.name} href={l.href} onClick={() => setOpen(false)} className="block text-body hover:text-heading py-2">{l.name}</a>
               ))}
-              <a href="/Portfolio/resume.pdf" download className="flex items-center gap-2 text-accent py-2 font-medium"><Download size={16} /> Resume</a>
+              <a href="/portfolio/resume.pdf" download className="flex items-center gap-2 text-accent py-2 font-medium"><Download size={16} /> Resume</a>
             </div>
           </motion.div>
         )}

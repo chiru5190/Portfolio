@@ -25,7 +25,7 @@ export default function Hero() {
               <a href="#projects" className="btn-primary flex items-center gap-2 group">
                 View Projects <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
-              <a href="/Portfolio/resume.pdf" download className="btn-outline flex items-center gap-2"><Download size={16} /> Resume</a>
+              <a href="/portfolio/resume.pdf" download className="btn-outline flex items-center gap-2"><Download size={16} /> Resume</a>
             </div>
 
             <div className="flex items-center gap-3 mt-8">
@@ -37,7 +37,7 @@ export default function Hero() {
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.15 }} className="flex justify-center lg:justify-end">
             <div className="relative">
               <div className="absolute inset-0 bg-accent/10 rounded-full blur-3xl scale-75" />
-              <img src="/Portfolio/profile.png" alt="Gedela Chiranjeevi"
+              <img src="/portfolio/profile.png" alt="Gedela Chiranjeevi"
                 className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-xl" />
             </div>
           </motion.div>
