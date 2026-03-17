@@ -7,7 +7,7 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-24 bg-bg">
+    <section id="achievements" className="py-32 bg-bg">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="section-title mb-6">Achievements</h2>

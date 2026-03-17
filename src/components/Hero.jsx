@@ -30,7 +30,7 @@ export default function Hero() {
 
             <div className="flex items-center gap-3 mt-8">
               <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg border border-border text-muted hover:text-heading hover:border-border-hover transition-all"><Github size={18} /></a>
-              <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg border border-border text-muted hover:text-accent-2 hover:border-accent-2/30 transition-all"><Linkedin size={18} /></a>
+              <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg border border-border text-muted hover:text-accent hover:border-accent/30 transition-all"><Linkedin size={18} /></a>
             </div>
           </motion.div>
 

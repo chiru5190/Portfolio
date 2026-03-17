@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-surface">
+    <section id="about" className="py-32 bg-surface">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="section-title mb-4">About Me</h2>

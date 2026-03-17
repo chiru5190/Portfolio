@@ -32,7 +32,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-bg">
+    <section id="contact" className="py-32 bg-bg">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
           <h2 className="section-title mb-3">Get in Touch</h2>
@@ -55,7 +55,7 @@ export default function Contact() {
               <p className="text-xs text-muted uppercase tracking-wider mb-3">Socials</p>
               <div className="flex gap-2">
                 <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted hover:text-heading hover:border-border-hover transition-all"><Github size={16} /></a>
-                <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted hover:text-accent-2 hover:border-accent-2/30 transition-all"><Linkedin size={16} /></a>
+                <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted hover:text-accent hover:border-accent/30 transition-all"><Linkedin size={16} /></a>
               </div>
             </div>
           </motion.div>

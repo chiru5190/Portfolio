@@ -10,7 +10,7 @@ export default {
         bg: "#f8fafc",
         surface: "#ffffff",
         accent: "#6366f1",
-        "accent-2": "#3b82f6",
+
         "accent-hover": "#818cf8",
         heading: "#1e293b",
         body: "#334155",

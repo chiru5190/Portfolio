@@ -41,7 +41,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-2">
           <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="p-2 rounded-lg text-muted hover:text-heading hover:bg-bg transition-all"><Github size={18} /></a>
-          <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="p-2 rounded-lg text-muted hover:text-accent-2 hover:bg-bg transition-all"><Linkedin size={18} /></a>
+          <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="p-2 rounded-lg text-muted hover:text-accent hover:bg-bg transition-all"><Linkedin size={18} /></a>
         </div>
 
         <button className="md:hidden text-muted" onClick={() => setOpen(!open)}>
