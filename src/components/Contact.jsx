@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Send, CheckCircle } from "lucide-react"
 import { useState, useRef } from "react"
-import { Github, Linkedin, Mail, Phone } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 export default function Contact() {
   const [status, setStatus] = useState("idle")
@@ -14,7 +14,8 @@ export default function Contact() {
     const data = new FormData(formRef.current)
 
     try {
-      const res = await fetch("https://formspree.io/f/chiranjeevig552005@gmail.com", {
+      // Using Formspree — replace with your own form ID at https://formspree.io
+      const res = await fetch("https://formspree.io/f/xyzabcde", {
         method: "POST", body: data, headers: { Accept: "application/json" }
       })
       if (res.ok) {
@@ -32,34 +33,35 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-32 bg-bg">
+    <section id="contact" className="py-32 bg-surface">
       <div className="max-w-6xl mx-auto px-6">
+
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
           <h2 className="section-title mb-3">Get in Touch</h2>
           <p className="section-subtitle max-w-xl">Open to opportunities in AI, ML, and software engineering.</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-8">
+
+          {/* Contact Info */}
           <motion.div initial={{ opacity: 0, x: -15 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2 space-y-4">
-            <div className="card p-5 space-y-4">
-              <a href="mailto:chiranjeevig552005@gmail.com" className="flex items-center gap-3 text-body hover:text-heading transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-bg border border-border flex items-center justify-center"><Mail size={16} className="text-accent" /></div>
-                <div><p className="text-xs text-muted">Email</p><p className="text-sm">chiranjeevig552005@gmail.com</p></div>
+            <div className="space-y-5">
+              <a href="mailto:chiranjeevig552005@gmail.com" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
+                <div className="w-10 h-10 rounded-lg bg-bg border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Mail size={16} className="text-accent" /></div>
+                <div><p className="text-xs text-muted">Email</p><p className="text-sm font-medium">chiranjeevig552005@gmail.com</p></div>
               </a>
-              <a href="tel:+918121649318" className="flex items-center gap-3 text-body hover:text-heading transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-bg border border-border flex items-center justify-center"><Phone size={16} className="text-accent" /></div>
-                <div><p className="text-xs text-muted">Mobile</p><p className="text-sm">+91-8121649318</p></div>
+              <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
+                <div className="w-10 h-10 rounded-lg bg-bg border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Github size={16} className="text-accent" /></div>
+                <div><p className="text-xs text-muted">GitHub</p><p className="text-sm font-medium">chiru5190</p></div>
               </a>
-            </div>
-            <div className="card p-5">
-              <p className="text-xs text-muted uppercase tracking-wider mb-3">Socials</p>
-              <div className="flex gap-2">
-                <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted hover:text-heading hover:border-border-hover transition-all"><Github size={16} /></a>
-                <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted hover:text-accent hover:border-accent/30 transition-all"><Linkedin size={16} /></a>
-              </div>
+              <a href="http://www.linkedin.com/in/gedelachiranjeevi" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-body hover:text-heading transition-colors group">
+                <div className="w-10 h-10 rounded-lg bg-bg border border-border flex items-center justify-center group-hover:border-accent/30 transition-colors"><Linkedin size={16} className="text-accent" /></div>
+                <div><p className="text-xs text-muted">LinkedIn</p><p className="text-sm font-medium">gedelachiranjeevi</p></div>
+              </a>
             </div>
           </motion.div>
 
+          {/* Form */}
           <motion.div initial={{ opacity: 0, x: 15 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-3">
             <form ref={formRef} onSubmit={handleSubmit} className="card p-6 space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
@@ -87,6 +89,7 @@ export default function Contact() {
               )}
             </form>
           </motion.div>
+
         </div>
       </div>
     </section>

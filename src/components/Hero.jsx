@@ -18,13 +18,14 @@ export default function Hero() {
             </h1>
             <p className="text-xl text-accent font-medium mb-6">AI / Machine Learning Engineer</p>
             <p className="text-body text-lg leading-relaxed mb-10 max-w-lg">
-              I build machine learning systems, data pipelines, and AI-powered applications using Python and modern web technologies.
+              I build production-ready machine learning systems, data pipelines, and AI-powered applications.
             </p>
 
             <div className="flex flex-wrap gap-3">
               <a href="#projects" className="btn-primary flex items-center gap-2 group">
                 View Projects <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
+              <a href="https://github.com/chiru5190" target="_blank" rel="noreferrer" className="btn-outline flex items-center gap-2"><Github size={16} /> GitHub</a>
               <a href="/portfolio/resume.pdf" download className="btn-outline flex items-center gap-2"><Download size={16} /> Resume</a>
             </div>
 
