@@ -1,5 +1,4 @@
 import { motion } from "framer-motion"
-import { Brain, MessageSquare, Users, Target } from "lucide-react"
 
 /* ── Core Stack ── */
 const coreStack = [
@@ -14,77 +13,31 @@ const coreStack = [
 const techGroups = [
   {
     title: "Machine Learning & Data",
-    skills: [
-      { name: "NumPy", icon: "devicon-numpy-plain" },
-      { name: "Pandas", icon: "devicon-pandas-plain" },
-      { name: "Matplotlib", icon: "devicon-matplotlib-plain" },
-      { name: "Seaborn", emoji: "📊" },
-    ],
+    skills: ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
   },
   {
     title: "Development",
-    skills: [
-      { name: "Streamlit", icon: "devicon-streamlit-plain" },
-      { name: "Flask", icon: "devicon-flask-original" },
-      { name: "React", icon: "devicon-react-original" },
-      { name: "HTML", icon: "devicon-html5-plain" },
-      { name: "CSS", icon: "devicon-css3-plain" },
-    ],
+    skills: ["Streamlit", "Flask", "React", "HTML", "CSS"],
   },
   {
     title: "Databases",
-    skills: [
-      { name: "MySQL", icon: "devicon-mysql-plain" },
-      { name: "SQLite", icon: "devicon-sqlite-plain" },
-    ],
+    skills: ["MySQL", "SQLite"],
   },
   {
     title: "Tools",
-    skills: [
-      { name: "Git", icon: "devicon-git-plain" },
-      { name: "GitHub", icon: "devicon-github-original" },
-      { name: "AWS", icon: "devicon-amazonwebservices-plain-wordmark" },
-      { name: "Google Colab", icon: "devicon-google-plain" },
-    ],
-  },
-  {
-    title: "Core CS",
-    skills: [
-      { name: "DSA", emoji: "🧮" },
-      { name: "DBMS", emoji: "🗄️" },
-      { name: "OS", emoji: "💻" },
-      { name: "Computer Networks", emoji: "🌐" },
-      { name: "OOP", emoji: "🔷" },
-    ],
+    skills: ["Git", "GitHub", "AWS", "Google Colab"],
   },
 ]
 
 /* ── Soft Skills ── */
 const softSkills = [
-  { name: "Problem Solving", Icon: Brain },
-  { name: "Adaptability", Icon: MessageSquare },
-  { name: "Leadership", Icon: Target },
+  "Problem Solving",
+  "Adaptability",
+  "Leadership",
+  "Communication",
+  "Time Management",
+  "Teamwork"
 ]
-
-/* ── Skill row item ── */
-function SkillCell({ skill, delay }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay }}
-      className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface transition-colors duration-150 cursor-default group"
-    >
-      {skill.icon ? (
-        <i className={`${skill.icon} text-lg text-muted group-hover:text-accent transition-colors`} />
-      ) : (
-        <span className="text-lg leading-none">{skill.emoji}</span>
-      )}
-      <span className="text-sm text-body group-hover:text-heading transition-colors">{skill.name}</span>
-    </motion.div>
-  )
-}
 
 export default function Skills() {
   return (
@@ -98,31 +51,34 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        {/* Core Stack */}
-        <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
+        {/* Core Stack - Visually Strongest */}
+        <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
           <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-5">Core Stack</h3>
           <div className="flex flex-wrap gap-3">
             {coreStack.map((s, i) => (
               <motion.div key={s.name} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-accent/[0.07] border border-accent/20 text-accent cursor-default hover:bg-accent/[0.12] transition-colors duration-150">
-                {s.icon ? <i className={`${s.icon} text-base`} /> : <span className="text-base leading-none">{s.emoji}</span>}
-                <span className="text-sm font-semibold">{s.name}</span>
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-accent/[0.05] border border-accent/20 text-accent cursor-default shadow-sm hover:bg-accent/[0.08] transition-colors duration-150">
+                {s.icon ? <i className={`${s.icon} text-lg`} /> : <span className="text-lg leading-none">{s.emoji}</span>}
+                <span className="text-sm font-bold tracking-wide">{s.name}</span>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Technical Skills */}
-        <div className="mb-14">
-          <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-6">Technical Skills</h3>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8">
-            {techGroups.map((group) => (
-              <motion.div key={group.title} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                <p className="text-xs font-medium text-heading/60 uppercase tracking-wider mb-3 pl-4">{group.title}</p>
-                <div className="space-y-0.5">
-                  {group.skills.map((skill, j) => (
-                    <SkillCell key={skill.name} skill={skill} delay={j * 0.03} />
+        {/* Technical Skills - Cleaner, text-based with subtle bullets */}
+        <div className="mb-16">
+          <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-8">Technical Proficiencies</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+            {techGroups.map((group, i) => (
+              <motion.div key={group.title} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
+                <p className="text-xs font-bold text-heading mb-4 uppercase tracking-wider">{group.title}</p>
+                <div className="flex flex-wrap gap-x-4 gap-y-2">
+                  {group.skills.map((skill) => (
+                    <span key={skill} className="text-sm text-body flex items-center gap-1.5">
+                      <span className="w-1 h-1 rounded-full bg-border-hover"></span>
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -130,16 +86,15 @@ export default function Skills() {
           </div>
         </div>
 
-        {/* Soft Skills */}
-        <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-4">Soft Skills</h3>
+        {/* Soft Skills - Visually lighter pills */}
+        <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="pt-8 border-t border-border/50">
+          <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-5">Soft Skills</h3>
           <div className="flex flex-wrap gap-2">
             {softSkills.map((s, i) => (
-              <motion.span key={s.name} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+              <motion.span key={s} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs font-medium text-muted hover:text-body hover:border-border-hover transition-colors cursor-default">
-                <s.Icon size={12} />
-                {s.name}
+                className="inline-flex px-3 py-1 bg-surface rounded-full text-[11px] font-medium text-muted uppercase tracking-widest border border-border/50 cursor-default">
+                {s}
               </motion.span>
             ))}
           </div>

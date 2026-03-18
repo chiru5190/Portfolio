@@ -80,6 +80,25 @@ export default function FeaturedProject() {
           </div>
         </motion.div>
 
+        {/* Design Decisions */}
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
+          <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-4">Design Decisions</h3>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
+              <h4 className="text-sm font-semibold text-heading mb-2">SQLite</h4>
+              <p className="text-xs text-body leading-relaxed">Chosen for lightweight, serverless local storage, eliminating the need for complex database setups while handling tabular data efficiently.</p>
+            </div>
+            <div className="bg-surface border border-border rounded-xl p-5">
+              <h4 className="text-sm font-semibold text-heading mb-2">Streamlit</h4>
+              <p className="text-xs text-body leading-relaxed">Used for rapid UI development, allowing fast iteration of interactive financial dashboards entirely in Python.</p>
+            </div>
+            <div className="bg-surface border border-border rounded-xl p-5">
+              <h4 className="text-sm font-semibold text-heading mb-2">Pandas</h4>
+              <p className="text-xs text-body leading-relaxed">Leveraged for efficient data transformation, handling missing values, and engineering financial volatility metrics at scale.</p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Key Features & Results */}
         <div className="grid md:grid-cols-2 gap-8 mb-14">
           <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
